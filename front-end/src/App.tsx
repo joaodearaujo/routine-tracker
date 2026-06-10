@@ -1,5 +1,7 @@
 import './index.css'
 import SwitchLanguageButton from './components/ui/SwitchLanguageButton';
+import PageButton from './components/ui/PageButton';
+import { pages } from './constants/pages';
 
 const partOfTheDay = 'Afternoon';
 const userName = 'Joao';
@@ -10,7 +12,7 @@ function App() {
 
   return (
     <>
-      <div className='w-full h-full flex flex-col gap-4'>
+      <div className='w-full h-full flex flex-col gap-4 items-center'>
         <header className='w-full h-fit flex bg-surface border border-px border-line rounded-xl px-4 py-4 items-center'>
           <div className='flex-1 h-full flex flex-col gap-2 mr-4'>
             <h1 className='text-ink font-semibold mb- text-xl w-fit'>Good {partOfTheDay ?? '!'}, {userName ?? 'User'}</h1>
@@ -31,11 +33,11 @@ function App() {
         </div>
 
         {/* Motivational Phrase */}
-        <div className='w-full text-sm text-muted'>Discipline Is Freedom — Choose The Discomfort That Builds, Not The One That Destroys.</div>
+        <div className='w-[95%] text-sm text-muted'>Discipline is freedom — choose the discomfort that builds, not the one that destroys.</div>
 
         {/* Pages selection */}
-        <nav>
-
+        <nav className='w-full flex gap-2'>
+        {pages.map((page) => <PageButton name={page.name} itemsDone={page.itemsDone} totalItems={page.totalItems} /> )}
         </nav>
 
         {/* Page Content */}
@@ -43,7 +45,7 @@ function App() {
         
         {/* Reminder */}
         <footer className='w-full h-fit flex bg-surface border border-px border-line rounded-xl px-4 py-4 items-center'>
-          <p className='text-sm text-muted text-justify'><span className='text-ink font-semibold'>Remember</span>: This Is A Menu, Not An Exam. Close The Core Items And Let The Rest Build Over Time. One Priority Per Cycle Beats Chasing Everything At Once.
+          <p className='text-sm text-muted text-justify'><span className='text-ink font-semibold'>Remember</span>: This is a menu, not an exam. Close the core items and let the rest build over time. One priority per cycle beats chasing everything at once.
           </p>
         </footer>
       </div>

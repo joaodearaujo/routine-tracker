@@ -1,6 +1,6 @@
 import { cn } from "../../utils/cn"
 
-interface SwitchLanguageButtonProps extends React.ComponentPropsWithRef<'button'> {
+export interface SwitchLanguageButtonProps extends React.ComponentPropsWithRef<'button'> {
     language: string;
     isSelected?: boolean;
 }
@@ -9,7 +9,7 @@ const SwitchLanguageButton = ({language, isSelected, ...props}: SwitchLanguageBu
   return (
     <button 
     {...props}
-    className={cn('flex surface border border-px rounded-lg py-[4px] px-[11px] items-center justify-center cursor-pointer', 
+    className={cn('flex surface border border-px rounded-lg py-1 px-2.75 items-center justify-center cursor-pointer uppercase', 
                   isSelected ? 'border-line2 bg-surface2' : 'border-line bg-surface'
     )}
     >
