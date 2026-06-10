@@ -29,6 +29,14 @@ function App() {
           <SwitchLanguageButton language='EN' isSelected />
           <SwitchLanguageButton language='PT' />
         </div>
+
+        {/* Motivational Phrase */}
+        <div className='w-full text-sm text-muted'>Discipline Is Freedom — Choose The Discomfort That Builds, Not The One That Destroys.</div>
+
+        {/* Pages selection */}
+        <nav>
+
+        </nav>
       </div>
     </>
   )
