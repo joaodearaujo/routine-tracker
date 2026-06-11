@@ -3,7 +3,7 @@ import { SwitchLanguageButton } from './components/ui/SwitchLanguageButton';
 import { PageButton } from './components/ui/PageButton';
 import { pages } from './constants/pages';
 import { ProgressRing } from './components/ui/ProgressRing';
-import { Daily } from './pages/daily/Daily';
+import { Daily } from '../daily/Daily';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -45,7 +45,8 @@ function App() {
             </nav>
 
               {/* Page Content */}
-              <div>
+              <div>         
+                {/* Routes for each Page*/}
                   <Routes>
                     <Route path="/" element={<Daily />}/>
                     <Route path="/daily" element={<Daily />}/>
@@ -57,8 +58,6 @@ function App() {
               <p className='text-sm text-muted text-justify'><span className='text-ink font-semibold'>Remember</span>: This is a menu, not an exam. Close the core items and let the rest build over time. One priority per cycle beats chasing everything at once.
               </p>
             </footer>
-
-            {/* Routes */}
           </main>
         </BrowserRouter>
       )
