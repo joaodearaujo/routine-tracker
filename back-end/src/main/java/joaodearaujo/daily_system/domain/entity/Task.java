@@ -1,7 +1,7 @@
 package joaodearaujo.daily_system.domain.entity;
 
 import jakarta.persistence.*;
-import joaodearaujo.daily_system.domain.enums.Tag;
+import joaodearaujo.daily_system.domain.enums.TaskTags;
 import java.util.UUID;
 
 @Entity
@@ -12,7 +12,7 @@ public class Task {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Tag tag;
+    private TaskTags taskTag;
 
     @Column
     private String name;
@@ -23,20 +23,23 @@ public class Task {
     @Column
     private Boolean isCore;
 
+    public Task() {}
 
-    public Task(Tag tag, String name, String description, Boolean isCore ) {
+    public Task(TaskTags taskTag, String name, String description, Boolean isCore ) {
         this.id = UUID.randomUUID().toString();
-        this.tag = tag;
+        this.taskTag = taskTag;
         this.description = description;
         this.isCore = isCore;
     }
 
-    public Tag getTag() {
-        return tag;
+    public String getId() {
+        return id;
     }
 
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    public TaskTags getTag() {return taskTag; }
+
+    public void setTag(TaskTags taskTag) {
+        this.taskTag = taskTag;
     }
 
     public String getName() {
