@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "page_id"}))
 public class TaskGroup {
 
     @Id
@@ -20,13 +21,22 @@ public class TaskGroup {
     @OneToMany(mappedBy = "group")
     private List<Task> taskList;
 
+    @ManyToOne
+    @JoinColumn(name = "page_id", nullable = false)
+    private Page page;
+
     public TaskGroup() { }
 
-    public TaskGroup(String name, String description) {
+    public TaskGroup(String name, String description, Page page) {
+        this.page = page;
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
         this.taskList = new ArrayList<>();
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -49,9 +59,15 @@ public class TaskGroup {
         return taskList;
     }
 
-
-    public String getId() {
-        return id;
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
     }
 
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
 }
