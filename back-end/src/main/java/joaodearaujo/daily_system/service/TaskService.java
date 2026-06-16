@@ -49,7 +49,6 @@ public class TaskService {
 
     public TaskResponse convertToResponse(Task task) {
         return new TaskResponse(
-            task.getGroup().getId(),
             task.getId(),
             task.getTag(),
             task.getName(),
