@@ -1,0 +1,59 @@
+
+export function ProgressRing({
+  current = 1,
+  total = 6,
+  label = "Core",
+  size = 82,
+  strokeWidth = 8,
+}) {
+
+  const radius = (size - strokeWidth) / 2;       
+  const circumference = 2 * Math.PI * radius;   
+  const progress = current / total;              
+  const offset = circumference * (1 - progress);
+  const center = size / 2;
+
+  return (
+    <div
+      className="relative inline-flex items-center justify-center"
+      style={{ width: size, height: size }}
+    >
+      <svg
+        width={size}
+        height={size}
+        viewBox={`0 0 ${size} ${size}`}
+        className="-rotate-90"                  
+      >
+
+        <circle
+          cx={center}
+          cy={center}
+          r={radius}
+          fill="none"
+          strokeWidth={strokeWidth}
+          className="stroke-neutral-700"
+        />
+
+        <circle
+          cx={center}
+          cy={center}
+          r={radius}
+          fill="none"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"                   
+          strokeDasharray={circumference}        
+          strokeDashoffset={offset}              
+          className="stroke-green-400 transition-all duration-500"
+        />
+      </svg>
+
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="text-xl font-bold leading-none text-ink font-secondary">
+          {current}/{total}
+        </span>
+        <span className="mt-0.5 text-xs text-muted font-secondary">{label}</span>
+      </div>
+    </div>
+  );
+}
+
