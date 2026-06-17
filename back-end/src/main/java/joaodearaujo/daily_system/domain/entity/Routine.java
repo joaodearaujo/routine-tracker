@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Page {
+public class Routine {
 
     @Id
     String id;
@@ -21,9 +21,9 @@ public class Page {
     @OneToMany(mappedBy = "page")
     List<TaskGroup> groupList;
 
-    public Page() {}
+    public Routine() {}
 
-    public Page(String name) {
+    public Routine(String name) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.groupList = new ArrayList<>();

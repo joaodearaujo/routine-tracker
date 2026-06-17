@@ -23,11 +23,11 @@ public class TaskGroup {
 
     @ManyToOne
     @JoinColumn(name = "page_id", nullable = false)
-    private Page page;
+    private Routine page;
 
     public TaskGroup() { }
 
-    public TaskGroup(String name, String description, Page page) {
+    public TaskGroup(String name, String description, Routine page) {
         this.page = page;
         this.id = UUID.randomUUID().toString();
         this.name = name;
@@ -63,11 +63,11 @@ public class TaskGroup {
         this.taskList = taskList;
     }
 
-    public Page getPage() {
+    public Routine getPage() {
         return page;
     }
 
-    public void setPage(Page page) {
+    public void setPage(Routine page) {
         this.page = page;
     }
 }

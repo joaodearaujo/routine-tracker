@@ -22,7 +22,7 @@ public class TaskService {
 
     public TaskResponse createTask(TaskRequest taskRequest) {
 
-        TaskGroup group = taskGroupRepository.findById(taskRequest.groupId())
+        TaskGroup group = taskGroupRepository.findById(taskRequest.group_id())
                 .orElseThrow(() -> new RuntimeException("Group not found"));
 
         Task newTask = convertToEntity(taskRequest, group);
@@ -56,7 +56,7 @@ public class TaskService {
                 taskRequest.category(),
                 taskRequest.title(),
                 taskRequest.description(),
-                taskRequest.isMandatory(),
+                taskRequest.is_mandatory(),
                 group
         );
     }

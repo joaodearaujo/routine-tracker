@@ -1,51 +1,50 @@
 package joaodearaujo.daily_system.service;
 
-import joaodearaujo.daily_system.domain.entity.Page;
-import joaodearaujo.daily_system.dto.request.PageRequest;
-import joaodearaujo.daily_system.dto.response.PageResponse;
+import joaodearaujo.daily_system.domain.entity.Routine;
+import joaodearaujo.daily_system.dto.request.RoutineRequest;
+import joaodearaujo.daily_system.dto.response.RoutineResponse;
 import joaodearaujo.daily_system.dto.response.TaskGroupResponse;
-import joaodearaujo.daily_system.repository.PageRepository;
-import joaodearaujo.daily_system.repository.TaskGroupRepository;
+import joaodearaujo.daily_system.repository.RoutineRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PageService {
+public class RoutineService {
 
-    private final PageRepository pageRepository;
+    private final RoutineRepository routineRepository;
     private final TaskGroupService taskGroupService;
 
-    public PageService(PageRepository pageRepository, TaskGroupService taskGroupService) {
-        this.pageRepository = pageRepository;
+    public RoutineService(RoutineRepository routineRepository, TaskGroupService taskGroupService) {
+        this.routineRepository = routineRepository;
         this.taskGroupService = taskGroupService;
     }
 
-    public PageResponse createPage(PageRequest pageRequest) {
-        Page newPage = convertToEntity(pageRequest);
-        pageRepository.save(newPage);
-        return convertToResponse(newPage);
+    public RoutineResponse createPage(RoutineRequest routineRequest) {
+        Routine newRoutine = convertToEntity(routineRequest);
+        routineRepository.save(newRoutine);
+        return convertToResponse(newRoutine);
     }
 
-    public List<PageResponse> findAll() {
-        List<Page> pageResponseList = pageRepository.findAll();
-        return pageResponseList.stream()
+    public List<RoutineResponse> findAll() {
+        List<Routine> routineResponseList = routineRepository.findAll();
+        return routineResponseList.stream()
                 .map(this::convertToResponse)
                 .toList();
     }
 
-    Page convertToEntity(PageRequest pageRequest) {
-        return new Page(
-                pageRequest.title()
+    Routine convertToEntity(RoutineRequest routineRequest) {
+        return new Routine(
+                routineRequest.title()
         );
     }
 
-    PageResponse convertToResponse(Page page) {
+    RoutineResponse convertToResponse(Routine page) {
         List<TaskGroupResponse> taskGroupResponseList = page.getGroupList().stream()
                 .map(taskGroupService::convertToResponse)
                 .toList();
 
-        return new PageResponse(
+        return new RoutineResponse(
                 page.getId(),
                 page.getName(),
                 taskGroupResponseList
