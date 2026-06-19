@@ -20,7 +20,6 @@ export function ProgressRing({
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
-        // 1. overflow-visible adicionado para o brilho não ser cortado nas bordas
         className="-rotate-90 overflow-visible"                  
       >
         {/* Círculo de Fundo */}

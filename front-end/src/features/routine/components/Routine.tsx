@@ -15,13 +15,15 @@ export function Routine({ routine }: Props) {
     return (
         <>
           {isEditMode && <AddButton title="Add Group"/>}
-          <p className="text-left text-muted text-[14px] flex flex-col gap-3 text-3">
-            {routine.description}
-          </p>
+          {routine.description && 
+            <p className="text-left text-muted text-[14px] flex flex-col gap-3 text-3">
+              {routine.description}
+            </p>}
           {routine?.groups.map(group => (
             <TaskGroup key={group.id}
                        group={group} />
           ))}
+          {routine?.groups.length === 0 && <AddButton title="Add Group"/>}
         </>
     )
 }

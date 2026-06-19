@@ -10,7 +10,7 @@ export function CheckButton({ isChecked, ...props }: CheckButtonProps) {
         <button 
             {...props}
             className={cn(
-                "size-6 border-2 rounded-lg flex items-center justify-center cursor-pointer transition-colors ease-in-out duration-200", 
+                "size-6 border-2 rounded-lg flex items-center justify-center cursor-pointer transition-all ease-in-out duration-400 hover:shadow-aura shadow-muted/20", 
                 isChecked ? 'bg-ok border-ok' : 'bg-none  border-line'
             )}
         >
