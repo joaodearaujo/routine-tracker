@@ -4,7 +4,8 @@ export interface Task {
   category: 'BODY' | 'CARE' | 'MIND' | 'STUDY'; 
   title: string;                                
   description?: string;
-  isMandatory: boolean;                        
+  isMandatory: boolean;        
+  isComplete: boolean;                
 }
 
 export interface TaskGroup {
@@ -16,6 +17,7 @@ export interface TaskGroup {
 
 export interface Routine {
   id: string;
-  title: string;                               
+  title: string;
+  description: string;                               
   groups: TaskGroup[];                     
 }
