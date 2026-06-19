@@ -36,4 +36,7 @@ public class TaskController {
     private void deleteTask(@PathVariable String id) {
         taskService.deleteTask(id);
     }
+
+    @PatchMapping("/{id}")
+    private void markTaskAsCompleted(@PathVariable String id) { taskService.markTaskAsComplete(id); }
 }

@@ -2,21 +2,23 @@ import { cn } from "../../../utils/cn";
 
 interface Props extends React.ComponentPropsWithoutRef<'button'>{
     title: string;
-    className?: string;
+    classNameButton?: string;
+    classNameText?: string;
 }
 
-export function AddButton({ title, className,...props }: Props) {
-   
+export function AddButton({ title, classNameButton,classNameText,...props }: Props) {
+    
     return (
         <button
             {...props}
             aria-label="Add Item"
             title="Add Item"
-            className={cn("h-full flex items-center justify-center border-green-500/20 border rounded-xl p-2 border-dashed cursor-pointer group hover:border-green-500 transition-all duration-300 ease-in-out hover:shadow-green-500/10 shadow-aura",
-            className
+            className={cn(
+                "flex-1 h-full w-full flex items-center justify-center border-edit/10 bg-none border-2 rounded-xl p-2 cursor-pointer group hover:border-edit transition-all duration-300 ease-in-out hover:shadow-edit/10 shadow-aura",
+                classNameButton
             )}
         >
-            <span className={cn("font-bold font-secondary text-xs text-green-500/50 group-hover:text-green-500 transition-colors duration-300 ease-in-out")}
+            <span className={cn("font-bold text-center font-secondary text-xs text-edit opacity-30 group-hover:opacity-100 transition-all duration-300 ease-in-out", classNameText)}
             >
                 + {title}
             </span>

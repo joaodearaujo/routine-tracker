@@ -4,8 +4,8 @@ export interface Task {
   category: 'BODY' | 'CARE' | 'MIND' | 'STUDY'; 
   title: string;                                
   description?: string;
-  isMandatory: boolean;        
   isComplete: boolean;                
+  isMandatory: boolean;        
 }
 
 export interface TaskGroup {

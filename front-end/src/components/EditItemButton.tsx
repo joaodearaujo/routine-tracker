@@ -21,7 +21,9 @@ export function EditItemButton ({ className, ...props }: Props) {
                 className
             )}
         >
-            <Pencil strokeWidth={2} className="size-4 text-blue-500/60 cursor-pointer hover:text-blue-500 transition-all duration-300 ease-in-out"/>
+            <Pencil 
+                strokeWidth={2} 
+                className="size-4 text-blue-500/60 cursor-pointer hover:text-blue-500 transition-all duration-300 ease-in-out"/>
         </button>
     )
 }

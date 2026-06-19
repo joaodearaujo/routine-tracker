@@ -1,5 +1,7 @@
 package joaodearaujo.daily_system.service;
 
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import joaodearaujo.daily_system.domain.entity.Task;
 import joaodearaujo.daily_system.domain.entity.TaskGroup;
 import joaodearaujo.daily_system.dto.request.TaskRequest;
@@ -20,12 +22,14 @@ public class TaskService {
         this. taskGroupRepository = taskGroupRepository;
     }
 
+    @Transactional
     public TaskResponse createTask(TaskRequest taskRequest) {
 
-        TaskGroup group = taskGroupRepository.findById(taskRequest.group_id())
-                .orElseThrow(() -> new RuntimeException("Group not found"));
+        TaskGroup group = taskGroupRepository.findById(taskRequest.groupId())
+                .orElseThrow(() -> new EntityNotFoundException("Group not found" + taskRequest.groupId()));
 
         Task newTask = convertToEntity(taskRequest, group);
+
         taskRepository.save(newTask);
         return convertToResponse(newTask);
     }
@@ -39,16 +43,31 @@ public class TaskService {
 
     public List<TaskResponse> findByGroup(String groupId) {
         TaskGroup group = taskGroupRepository.findById(groupId)
-                .orElseThrow(() -> new RuntimeException("Group not found: " + groupId));
+                .orElseThrow(() -> new EntityNotFoundException("Group not found: " + groupId));
 
-         List<TaskResponse> taskListByGroup = taskRepository.findByGroup(group).stream()
+        List<TaskResponse> taskListByGroup = taskRepository.findByGroup(group).stream()
                  .map(this::convertToResponse)
                  .toList();
          return taskListByGroup;
     }
 
-    public void deleteTask(String id) {
-            taskRepository.deleteById(id);
+    public void deleteTask(String taskId) {
+        if (!taskRepository.existsById(taskId)) {
+            throw new EntityNotFoundException("Task not found with ID: " + taskId);
+        }
+            taskRepository.deleteById(taskId);
+    }
+
+    @Transactional
+    public void markTaskAsComplete(String taskId) {
+        if (!taskRepository.existsById(taskId)) {
+            throw new EntityNotFoundException("Task not found with ID: " + taskId);
+        }
+
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new EntityNotFoundException("Task not found with ID: " + taskId));
+
+        task.setIs_completed(!task.getIs_Completed());
     }
 
     public Task convertToEntity(TaskRequest taskRequest, TaskGroup group) {
@@ -56,7 +75,7 @@ public class TaskService {
                 taskRequest.category(),
                 taskRequest.title(),
                 taskRequest.description(),
-                taskRequest.is_mandatory(),
+                taskRequest.isMandatory(),
                 group
         );
     }
@@ -67,8 +86,8 @@ public class TaskService {
             task.getTag(),
             task.getName(),
             task.getDescription(),
+            task.getIs_Completed(),
             task.getCore()
         );
     }
-
 }

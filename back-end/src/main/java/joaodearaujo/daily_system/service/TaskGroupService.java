@@ -24,7 +24,7 @@ public class TaskGroupService {
     }
 
     public TaskGroupResponse createGroupTask(TaskGroupRequest taskGroupRequest) {
-        Routine page = routineRepository.findById(taskGroupRequest.page_id())
+        Routine page = routineRepository.findById(taskGroupRequest.pageId())
                 .orElseThrow(() -> new RuntimeException("Page not found"));;
 
         TaskGroup newTaskGroup = convertToEntity(taskGroupRequest, page);

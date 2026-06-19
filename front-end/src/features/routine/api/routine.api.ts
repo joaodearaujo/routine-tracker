@@ -6,6 +6,11 @@ export const getRoutines = async () => {
   return res.json();
 };
 
+export const toggleCompleted = async () => {
+  const res = await fetch(`${BASE_URL}/v/task`);
+  if (!res.ok) throw new Error('Failed to fetch routines');
+};
+
 export const createRoutine = async (title: string) => {
   const res = await fetch(`${BASE_URL}/v1/page`, {
     method: 'POST',

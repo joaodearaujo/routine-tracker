@@ -16,12 +16,12 @@ export function DeleteButton ({ className, ...props }: Props) {
             aria-label="Delete"
             title="Delete"
             className={cn(
-                "size-6 border bg-red-500/10 border-red-500 rounded-lg flex items-center justify-center group hover:bg-red-500/20 hover:shadow-aura-strong shadow-red-500 transition-all duration-500 ease-in-out",
+                "size-6 border-2 bg-red-500/10 border-red-500 rounded-lg flex items-center justify-center group hover:bg-red-500/20 hover:shadow-aura shadow-red-500 transition-all duration-500 ease-in-out",
                 isEditMode ? "opacity-100": "opacity-0",
                 className
             )}
         >
-            <X  strokeWidth={3} className="size-4 text-red-500/60 cursor-pointer hover:text-red-500 transition-all duration-500 ease-in-out"/>
+            <X  strokeWidth={3} className="size-4 text-red-500/60 cursor-pointer hover:text-red-500 transition-all duration-300 ease-in-out"/>
         </button>
     )
 }

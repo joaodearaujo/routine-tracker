@@ -5,13 +5,15 @@
   --color-purple: #9E96EF;
   --color-pink: #E76F9C;
   --color-amber: #E2A64C;
+  --color-red: #FB2C36;
   --color-blue: #5BA2E9;
+  --color-blue2: #0080ff;
   --color-ok: #35C28D;
-  --color-edit: #E76F9C;
-
+  --color-edit: #E2A64C;
+  
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Space Grotesk', sans-serif;
-
+  
   --color-bg: #0F1113;
   --color-surface: #181B1F;
   --color-surface2: #20242A;
@@ -31,6 +33,7 @@
   --color-muted: #6B7280;
   --color-line: rgba(0, 0, 0, 0.07);
   --color-line2: rgba(0, 0, 0, 0.13);
+  --color-edit: #E76F9C;
   --shadow-aura: 0 0 20px 0 rgba(0, 0, 0, 0.06);
   --shadow-aura-strong: 0 0 25px 0 rgba(0, 0, 0, 0.12);
 }

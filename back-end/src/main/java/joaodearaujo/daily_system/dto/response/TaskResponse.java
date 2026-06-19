@@ -6,5 +6,6 @@ public record TaskResponse(
         TaskCategory category,
         String title,
         String description,
-        Boolean is_mandatory
+        Boolean isCompleted,
+        Boolean isMandatory
 ) {}

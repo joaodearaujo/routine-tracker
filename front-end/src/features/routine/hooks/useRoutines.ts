@@ -8,9 +8,11 @@ export function useRoutines() {
     queryFn: getRoutines,
   });
 
+  const mapped = query.data ? mapRoutineToDomain(query.data) : [];
+
   return {
-    routines: query.data ? mapRoutineToDomain(query.data) : [],
-    routine: query.data ? mapRoutineToDomain(query.data)[0] : undefined,
+    routines:  mapped,
+    routine: mapped[0],
     isLoading: query.isLoading,
     isError: query.isError,
   };
