@@ -22,8 +22,8 @@ export function SetRoutineButton({title, tasks, isActive}: Props) {
   return (
       <Link to={`/${title}`}
           className={cn(
-              'flex w-full h-12.5 min-w-0  border-2 rounded-lg py-2 px-2.75 items-center cursor-pointer ',
-              isActive ? 'border-line2 bg-surface2' : 'border-line bg-surface',
+              'flex w-full h-12.5 min-w-0  border rounded-lg py-2 px-2.75 items-center cursor-pointer ',
+              isActive ? 'border-line2/50 bg-surface2' : 'border-line bg-surface',
               isEditMode ? 'justify-between' : 'justify-center'
             )}
         >
@@ -46,7 +46,7 @@ export function SetRoutineButton({title, tasks, isActive}: Props) {
           {isEditMode && 
               <CheckButton 
                 Icon={X} 
-                onClick={handleCheckToDelete} 
+                onClick={handleCheckToDelete}
                 isChecked={isCheckedToDelete} 
                 className={isCheckedToDelete ? 'bg-red border-red': ''} 
             />}

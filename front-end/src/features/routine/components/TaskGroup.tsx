@@ -19,7 +19,7 @@ export function TaskGroup({ group }: Props) {
         const { isEditMode } = useEditMode();
 
     return (
-        <div className="relative text-left text-muted text-xs flex flex-col gap-2 text-3 border-2 p-3 rounded-xl border-line">
+        <div className="relative text-left text-muted text-xs flex flex-col gap-2 text-3 border p-3 rounded-xl border-line2/60">
             <div className="flex flex-col gap-2 items-start justify-between">
                     <div className="flex gap-2 items-center justify-between w-full">
                         <h2 className="uppercase flex-1 font-secondary font-semibold tracking-wider text-muted">{group?.title}</h2>
@@ -51,14 +51,14 @@ export function TaskGroup({ group }: Props) {
                     ))}
                 </div>}
 
-            {isEditMode && <AddButton title="Add Task"/>}
+            {isEditMode && <AddButton title="Task"/>}
 
             {group.tasks.length === 0 &&  
                 !isEditMode && 
                     <AddButton 
-                        title="Add Task" 
+                        title="Task" 
                         classNameButton="border-line" 
-                        classNameText="text-muted group-hover:text-edit"
+                        classNameText="text-ink group-hover:text-edit"
                     />}
            
         </div>

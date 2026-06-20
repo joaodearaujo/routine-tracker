@@ -29,7 +29,7 @@ export function ProgressRing({
           r={radius}
           fill="none"
           strokeWidth={strokeWidth}
-          className="stroke-neutral-700"
+          className="stroke-surface2"
         />
 
         {/* Círculo de Progresso */}
