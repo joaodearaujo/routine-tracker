@@ -1,5 +1,5 @@
-import type { Routine, Task } from '../types/routine.domain.type';
-import type { RoutineApiResponse } from '../types/routine.dto';
+import type { Routine, Task } from '@/features/routine/types/routine.domain.type';
+import type { RoutineApiResponse } from '@/features/routine/types/routine.dto';
 
 export const mapRoutineToDomain = (data: RoutineApiResponse): Routine[] => {
   return data.map((routine) => ({
@@ -15,8 +15,8 @@ export const mapRoutineToDomain = (data: RoutineApiResponse): Routine[] => {
         category: task.category as Task['category'],
         title: task.title,
         description: task.description,
-        isComplete: task.is_complete,    
-        isMandatory: task.is_mandatory,
+        isComplete: task.isComplete,    
+        isMandatory: task.isMandatory,
       })),
     })),
   }));
