@@ -1,7 +1,7 @@
 export type RoutineApiResponse = Array<{
   id: string;
   title: string;
-  description: string;         
+  description?: string;         
   groups: Array<{
     id: string;
     title: string;
@@ -11,8 +11,8 @@ export type RoutineApiResponse = Array<{
       category: string;
       title: string;
       description?: string;
-      is_complete: boolean;
-      is_mandatory: boolean;
+      isComplete: boolean;
+      isMandatory: boolean;
     }>;
   }>;
 }>;

@@ -1,5 +1,6 @@
 
 export interface Task {
+  groupId: string;
   id: string;
   category: 'BODY' | 'CARE' | 'MIND' | 'STUDY'; 
   title: string;                                
@@ -9,6 +10,7 @@ export interface Task {
 }
 
 export interface TaskGroup {
+  routineId: string;
   id: string;
   title: string;                               
   description?: string;
@@ -18,6 +20,6 @@ export interface TaskGroup {
 export interface Routine {
   id: string;
   title: string;
-  description: string;                               
+  description?: string;                               
   groups: TaskGroup[];                     
 }
