@@ -20,7 +20,7 @@ public class RoutineService {
         this.taskGroupService = taskGroupService;
     }
 
-    public RoutineResponse createPage(RoutineRequest routineRequest) {
+    public RoutineResponse createRoutine(RoutineRequest routineRequest) {
         Routine newRoutine = convertToEntity(routineRequest);
         routineRepository.save(newRoutine);
         return convertToResponse(newRoutine);
