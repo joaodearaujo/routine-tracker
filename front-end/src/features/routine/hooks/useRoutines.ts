@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRoutines } from "../api/routine.api";
-import { mapRoutineToDomain } from "../mappers/routine.mapper";
+import { getRoutines } from "@/features/routine/api/routine.api";
+import { mapRoutineToDomain } from "@/features/routine/mappers/routine.mapper";
 
 export function useRoutines() {
   const query = useQuery({
