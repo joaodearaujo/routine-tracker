@@ -1,0 +1,12 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createGroup } from "@/features/routine/api/taskGroup.api";
+
+export function useCreateGroup() {
+    const queryClient = useQueryClient();
+    
+    return useMutation({
+        mutationFn: createGroup,
+        onSuccess: () => queryClient.invalidateQueries({queryKey: ['routines']}),
+        onError: (error: Error) => console.log(error.message),
+    })
+}
