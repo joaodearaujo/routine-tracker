@@ -37,13 +37,24 @@ export function TaskGroup({ group }: Props) {
     }
 
     return (
-        <div className="bg-surface2 pb-1 rounded-xl">
-            <div className="text-left text-muted text-xs flex flex-col gap-2 text-3 border p-4 bg-surface/80 rounded-xl border-line2/60">
+        <div className="bg-surface2 pb-1 rounded-xl first:-mb-1.25">
+            <div className="text-left text-muted text-xs flex flex-col gap-2 text-3 border-2 p-4 bg-bg rounded-xl border-surface2">
                 <div className="flex gap-2 items-center justify-between w-full">
-                    <h2 className="uppercase flex-1 font-secondary font-semibold tracking-wider text-muted">
-                        {group.title}
-                    </h2>
-                    
+                    <div className="flex h-10 w-full gap-4 items-center ">
+                        <h2 className="uppercase font-secondary font-semibold text-nowrap tracking-wider text-muted leading-none">
+                            {group.title}
+                        </h2>
+                        
+                        {isEditMode && (
+                            <AddButton
+                                title="Task"
+                                label="Add Task"
+                                onClick={handleForm}
+                             />
+                        )}
+                        
+                    </div>
+                
                     {isEditMode && (
                        <CloseButton
                             onClick={() => deleteGroup(group.id)}
@@ -71,10 +82,7 @@ export function TaskGroup({ group }: Props) {
                         />
                     ))
                 )}
-                
-                {(group.tasks?.length === 0 || isEditMode) && (
-                    <AddButton title="Task" onClick={handleForm}/>
-                )}
+
             </div>
             {isFormOpen && (
                     <Form

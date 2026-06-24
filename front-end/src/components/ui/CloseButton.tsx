@@ -13,7 +13,7 @@ export function CloseButton({className, ...props}: Props) {
         >
             <X 
                 strokeWidth={3}
-                className="size-5"
+                className="size-3"
             />
         </button>
     )

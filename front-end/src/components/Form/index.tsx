@@ -15,7 +15,7 @@ export function Form({ title, fields, onClose, ...props }: Props) {
                 {...props}
                 className="bg-surface2 w-[25%] h-fit rounded-xl pb-1 overflow-hidden"
             >
-                <div className="w-full h-full flex flex-col bg-surface rounded-xl p-5 border font-secondary border-line overflow-hidden gap-4">
+                <div className="w-full h-full flex flex-col bg-surface rounded-xl p-5 border font-secondary border-surface2 overflow-hidden gap-4">
                     <div className="w-full flex items-center justify-between">
                         <span className="text-ink uppercase font-semibold">{title}</span>
 
@@ -29,7 +29,7 @@ export function Form({ title, fields, onClose, ...props }: Props) {
                     <div className="bg-surface2 text-ink font-semibold cursor-pointer text-md rounded-[13px] pb-1 overflow-hidden">
                         <button
                             type="submit"
-                            className="w-full bg-surface border border-line hover:bg-surface/60 transition-colors duraton-300 ease-in-out text-ink font-semibold cursor-pointer text-md rounded-[13px] overflow-hidden p-3"
+                            className="w-full bg-surface border border-surface2 hover:bg-surface/60 transition-colors duraton-300 ease-in-out text-ink font-semibold cursor-pointer text-md rounded-[13px] overflow-hidden p-3"
                         >
                             Create
                         </button>

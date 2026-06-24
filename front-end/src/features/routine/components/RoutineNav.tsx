@@ -11,14 +11,11 @@ import { useCreateRoutine } from "@/features/routine/hooks/useCreateRoutine";
 export function RoutineNav() {
   const { isEditMode } = useEditMode();
   const location = useLocation();
-  
   const { routines } = useRoutines();
-
   const { isFormOpen, setIsFormOpen, handleForm } = useForm();
-  
   const { mutate: addRoutine } = useCreateRoutine();
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmitRoutine = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const data = new FormData(e.currentTarget);
       addRoutine({
@@ -31,24 +28,35 @@ export function RoutineNav() {
 
   return (
     <>
-      {isEditMode && <AddButton title="Routine" onClick={handleForm} />}
-      <div className="w-full flex gap-2 items-center">
-        {routines.map(routine => (
-          <SetRoutineButton
-            key={routine.id}
-            title={routine.title}
-            tasks={routine.groups.flatMap(group => group.tasks)}
-            isActive={location.pathname === `/${routine?.title}`}
-          />
-        ))}
-      </div>
+      <div className="w-full h-fit flex flex-col gap-2">
+        {isEditMode && (
+            <div className="w-full flex gap-2">
+                <AddButton
+                  title="Routine"
+                  label="Add Routine"
+                  onClick={handleForm}
+                  classNameWrapper="w-full"/>
+            </div>
+        )}
 
+        <div className="w-full flex gap-2 items-center">
+          {routines.map(routine => (
+            <SetRoutineButton
+              key={routine.id}
+              title={routine.title}
+              tasks={routine.groups.flatMap(group => group.tasks)}
+              isActive={location.pathname === `/${routine?.title}`}
+            />
+          ))}
+        </div>
+      </div>
+      
       {isFormOpen && (
         <Form
           title="Create Routine"
           fields={ROUTINE_FIELDS}
           method="POST"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitRoutine}
           onClose={() => setIsFormOpen(false)}
         />
       )}

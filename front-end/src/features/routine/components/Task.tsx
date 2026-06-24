@@ -30,8 +30,8 @@ export function Task({ task }: Props) {
     
 
     return (
-        <div className="pb-1 rounded-xl bg-surface2 overflow-hidden">
-            <div className="w-full h-fit flex flex-col items-start bg-surface rounded-xl border border-line overflow-hidden">
+        <div className="pb-0.5 rounded-xl bg-surface2 overflow-hidden">
+            <div className="w-full h-fit flex flex-col items-start bg-surface rounded-xl border-2 border-surface2 overflow-hidden">
                 <div
                     onClick={handleExpand}
                     className="w-full h-12 flex items-center justify-between p-4 gap-3 cursor-pointer"
@@ -41,31 +41,28 @@ export function Task({ task }: Props) {
                     <div className="flex-1 text-left flex items-center gap-2">
                         <span
                             className={cn(
-                                "transition-colors text-[15px] font-medium font-primary duration-300 ease-in-out",
-                                isChecked ? "line-through opacity-50" : "text-ink"
+                                "transition-colors text-[15px] font-medium font-primary duration-300 ease-in-out leading-none",
+                                isChecked ? "line-through text-muted opacity-50" : "text-ink"
                             )}
                         >
-                            {task.title ?? "Title not found"}
+                            {task.title}
                         </span>
 
-                        {task.isMandatory && (
-                            <Star />
-                        )}
+                        {task.isMandatory && <Star />}
                     </div>
 
-                    {isEditMode ? (
-                        <CloseButton
-                            onClick={() => deleteTask(task.id)}
-                            className={"opacity-60 hover:text-red"}
-                        />
-                    ) : (
+                    {isEditMode 
+                        ? <CloseButton onClick={() => deleteTask(task.id)} className={"opacity-60 hover:text-red"} /> 
+                        
+                        : (
                         <>
-                            <ExpandButton
-                                className="mr-2"
-                                onClick={controlExpand}
-                                isExpanded={isExpanded}
-                            />
-
+                            {task.description && (
+                                <ExpandButton
+                                        className="mr-2"
+                                        onClick={controlExpand}
+                                        isExpanded={isExpanded}
+                                />
+                            )}
                             <CheckButton
                                 Icon={Check}
                                 onClick={controlCheck}

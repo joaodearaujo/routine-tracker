@@ -90,12 +90,12 @@ export const TASK_FIELDS: FormField[] = [
     type: 'select',
     options:[
       {
-        optionName: 'YES',
-        optionValue: 'true',
-      },
-      {
         optionName: 'NO',
         optionValue: 'false',
+      },
+      {
+        optionName: 'YES',
+        optionValue: 'true',
       },
     ]
   },

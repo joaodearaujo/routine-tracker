@@ -18,28 +18,29 @@ export function StandardButton({
   ...props 
 }: Props) {
   return (
-    <div className={cn( 
-            "group bg-surface2 pb-1 rounded-[13px] transition-colors duration-300 ease-in-out",
-            classNameWrapper
-         )}
-    >
-      <button
-        {...props}
-        aria-label={label}
-        title={label}
-        className={cn(
-          "flex items-center justify-center rounded-xl size-fit p-2 bg-surface border border-line cursor-pointer transition-all duration-300 ease-in-out",
-          classNameButton
-        )}
-      >
-        <Icon
-          strokeWidth={2.5}
-          className={cn(
-            "size-5 text-muted transition-all duration-300",
-            classNameIcon
-          )}
-        />
-      </button>
-    </div>
+      <div className="size-12 shrink-0 flex items-center justify-center">
+        <div className={cn("group bg-surface2 rounded-[13px] pb-1 hover:pb-0.5 active:pb-0",
+                classNameWrapper
+             )}
+        >
+          <button
+            {...props}
+            aria-label={label}
+            title={label}
+            className={cn(
+              "flex items-center justify-center rounded-xl size-fit outline-none p-2 bg-surface border-2 border-surface2 cursor-pointer hover:bg-surface/50",
+              classNameButton
+            )}
+          >
+            <Icon
+              strokeWidth={2.5}
+              className={cn(
+                "size-5 text-muted",
+                classNameIcon
+              )}
+            />
+          </button>
+        </div>
+      </div>
   );
 }

@@ -19,13 +19,13 @@ export function FormField({...field}: FormField) {
             </label>
             {field.type === 'select' ? (
                 <select 
-                    className="w-full bg-surface2 rounded-xl px-3 py-2 border border-line placeholder:text-sm focus:outline-none text-semibold text-muted"
+                    className="w-full bg-surface2 rounded-xl px-3 py-2 border border-surface2 placeholder:text-sm focus:outline-none text-semibold text-muted"
                     name={field.name}
                     id={field.id}
                 >
                     {field.options?.map( option => (
                         <option 
-                            className="w-full bg-surface2 rounded-xl px-3 py-2 border border-line placeholder:text-sm focus:outline-none text-semibold text-muted"
+                            className="w-full bg-surface2 rounded-xl px-3 py-2 border border-surface2 placeholder:text-sm focus:outline-none text-semibold text-muted"
                             value={option.optionValue}
                             key={option.optionName}
                         >
@@ -39,7 +39,7 @@ export function FormField({...field}: FormField) {
                     id={field.id}
                     name={field.name}
                     required={field.required}
-                    className="w-full bg-surface2 rounded-xl px-3 py-2 border border-line placeholder:text-sm focus:outline-none text-semibold text-muted"
+                    className="w-full bg-surface2 rounded-xl px-3 py-2 border border-surface2 placeholder:text-sm focus:outline-none text-semibold text-muted"
                     type={field.type}
                 />
             )}

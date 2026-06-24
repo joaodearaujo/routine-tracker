@@ -30,13 +30,17 @@ export function Routine({ routine }: Props) {
     setIsFormOpen(false);
   }
   
-  if (!routine) return <div className="text-muted">Something went wrong :(</div>;
       
   return (
-        <>
+        <div>
           {(routine.groups.length === 0 || isEditMode) && (
-            <AddButton title="Group" onClick={handleForm}/>
+                  <div className="w-full h-14 flex items-start justify-start">
+                    <AddButton title="Group"  label="Add Group" onClick={handleForm} classNameWrapper="w-full"/>
+                </div>
           )}
+
+          <main className='w-full min-h-fit  sm:max-h-135 flex flex-col gap-4 scrollbar-none overflow-y-auto border-t-2 border-b-2 rounded-xl border-surface2'>
+ 
           
           {routine?.groups.map(group => ( 
             <TaskGroup 
@@ -44,6 +48,8 @@ export function Routine({ routine }: Props) {
               group={group} 
             />
           ))}
+
+          </main>
 
           {isFormOpen && (
               <Form
@@ -54,6 +60,6 @@ export function Routine({ routine }: Props) {
                   onClose={() => setIsFormOpen(false)}
               />
           )}
-        </>
+        </div>
     )
 }

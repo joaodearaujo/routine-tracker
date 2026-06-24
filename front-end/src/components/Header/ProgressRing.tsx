@@ -1,13 +1,18 @@
+import { useTheme } from "@/context/ThemeContext";
+import { cn } from "@/utils/cn";
+
 interface Props {
   current: number;
   total: number
 }
 
 export function ProgressRing({
-  current = 1,
-  total = 6,
+  current,
+  total,
 }: Props) {
   
+  const { isDark } = useTheme();
+
   const label = "Core"
   const size = 82
   const strokeWidth = 8
@@ -48,7 +53,11 @@ export function ProgressRing({
           strokeLinecap="round"                   
           strokeDasharray={circumference}        
           strokeDashoffset={offset}              
-          className="stroke-green-400 transition-all duration-500 drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]"
+          className={cn(
+            "transition-all duration-800 ease-in-out",
+            !(current === 0) && 'stroke-green-400',
+            isDark && 'drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]'
+          )}
         />
       </svg>
 
