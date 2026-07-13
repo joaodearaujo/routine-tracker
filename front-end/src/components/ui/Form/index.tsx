@@ -1,6 +1,6 @@
 import { FormField } from "./FormField";
-import { CloseButton } from "@/components/ui/CloseButton";
-import { Modal } from "../ui/Modal";
+import { CloseButton } from "@/components/ui/Buttons/CloseButton";
+import { Modal } from "@/components/ui/Modal/Modal";
 
 interface Props extends React.ComponentPropsWithRef<'form'>{
     title: string;

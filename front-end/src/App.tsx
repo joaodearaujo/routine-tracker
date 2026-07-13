@@ -6,12 +6,14 @@ import { Header } from './components/Header';
 
 function App() {
   return (
-          <div className='relative w-full min-h-0 flex flex-col gap-4 items-center justify-center'>
-            <Header />            
-            <RoutineNav />
-            <RoutineRouter />
-            <CategoriesLegend />
+        <>
+          <div className='h-full min-h-0 flex flex-col gap-4'>
+              <Header />
+              <RoutineNav />
+              <RoutineRouter />
           </div>
+          <CategoriesLegend />
+        </>
       )
 }
 

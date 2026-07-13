@@ -1,16 +1,14 @@
 import { Check } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { ExpandButton } from "./ExpandButton";
-import { CheckButton } from "@/components/ui/CheckButton";
+import { CheckButton } from "@/components/ui/Buttons/CheckButton";
 import type { Task as TaskType } from "../types/routine.domain.type";
 import { CATEGORY_COLORS, type CategoryKey } from "@/constants/categoryColors";
 import { useEditMode } from "@/context/EditModeContext";
 import { Star } from "@/components/ui/Star";
 import { Dot } from "@/components/ui/Dot";
 import { useExpand } from "@/features/routine/hooks/useExpand";
-import { CloseButton } from "@/components/ui/CloseButton";
 import { useState } from "react";
-import { useDeleteTask } from "../hooks/useDeleteTask";
 
 interface Props {
     task: TaskType;
@@ -21,14 +19,12 @@ export function Task({ task }: Props) {
     const [isChecked, setIsChecked] = useState<boolean>(task.isComplete);
     const { isEditMode } = useEditMode();
     const { isExpanded, controlExpand, handleExpand } = useExpand(false);
-    const { mutate: deleteTask } = useDeleteTask();
 
     const controlCheck = (e: React.MouseEvent) => {
         e.stopPropagation();
         setIsChecked((prev) => !prev);
     };
     
-
     return (
         <div className="pb-0.5 rounded-xl bg-surface2 overflow-hidden">
             <div className="w-full h-fit flex flex-col items-start bg-surface rounded-xl border-2 border-surface2 overflow-hidden">
@@ -51,25 +47,21 @@ export function Task({ task }: Props) {
                         {task.isMandatory && <Star />}
                     </div>
 
-                    {isEditMode 
-                        ? <CloseButton onClick={() => deleteTask(task.id)} className={"opacity-60 hover:text-red"} /> 
-                        
-                        : (
-                        <>
-                            {task.description && (
-                                <ExpandButton
-                                        className="mr-2"
-                                        onClick={controlExpand}
-                                        isExpanded={isExpanded}
-                                />
-                            )}
-                            <CheckButton
-                                Icon={Check}
-                                onClick={controlCheck}
-                                isChecked={isChecked}
-                            />
-                        </>
+
+                    {task.description && (
+                        <ExpandButton
+                                className="mr-2"
+                                onClick={controlExpand}
+                                isExpanded={isExpanded}
+                        />
                     )}
+
+                    <CheckButton
+                        Icon={Check}
+                        onClick={controlCheck}
+                        isChecked={isChecked}
+                    />
+
                 </div>
 
                 {(isExpanded && !isEditMode) && (

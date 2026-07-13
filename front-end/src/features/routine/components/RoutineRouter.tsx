@@ -7,14 +7,16 @@ export function RoutineRouter() {
     const { routines } = useRoutines();
     
     return (
-            <Routes>
-                {routines.map(routine => (
-                    <Route 
-                        path={`/${routine?.title}`} 
-                        key={routine.id}
-                        element={<Routine routine={routine}/>} 
-                    />
-                ))}
-            </Routes>
+            <div className="max-h-full h-fit overflow-y-auto">
+                <Routes>
+                    {routines.map(routine => (
+                        <Route
+                            path={`/${routine?.title}`}
+                            key={routine.id}
+                            element={<Routine routine={routine}/>}
+                        />
+                    ))}
+                </Routes>
+            </div>
     )
 }

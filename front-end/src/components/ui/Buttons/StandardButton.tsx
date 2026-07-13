@@ -19,7 +19,7 @@ export function StandardButton({
 }: Props) {
   return (
       <div className="size-12 shrink-0 flex items-center justify-center">
-        <div className={cn("group bg-surface2 rounded-[13px] pb-1 hover:pb-0.5 active:pb-0",
+        <div className={cn("group bg-surface2 rounded-[13px] pb-2 hover:pb-1.5 active:pb-0",
                 classNameWrapper
              )}
         >

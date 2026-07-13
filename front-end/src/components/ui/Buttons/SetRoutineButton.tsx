@@ -18,7 +18,7 @@ export function SetRoutineButton({title, tasks, isActive}: Props) {
       <div className="w-full h-18 flex items-center justify-center">
         <Link
           to={`/${title}`}
-          className={cn('group relative flex w-full h-fit min-w-0 rounded-xl pb-1 hover:pb-0.5 active:pb-0 active:bg-transparent bg-surface2 items-center cursor-pointer')}
+          className={cn('group relative flex w-full h-fit min-w-0 rounded-xl pb-2 hover:pb-1.5 active:pb-0 active:bg-transparent bg-surface2 items-center cursor-pointer')}
         >
           <div
             className={cn(
