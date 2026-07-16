@@ -5,8 +5,8 @@ export const TaskApiSchema = z.object({
   category: z.string(),
   title: z.string(),
   description: z.string().optional(),
-  isComplete: z.boolean(),
-  isMandatory: z.boolean(),
+  isCompleted: z.boolean(),
+  isCore: z.boolean(),
 });
 
 export const TaskGroupApiSchema = z.object({

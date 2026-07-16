@@ -17,8 +17,8 @@ export const mapRoutineToDomain = (data: RoutineApiResponse): Routine[] => {
         category: task.category as Task['category'],
         title: task.title,
         description: task.description,
-        isComplete: task.isComplete,    
-        isMandatory: task.isMandatory,
+        isCompleted: task.isCompleted,    
+        isCore: task.isCore,
       })),
     })),
   }));

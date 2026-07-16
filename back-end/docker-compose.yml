@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: routine_tracker
+      POSTGRES_USER: routine_tracker
+      POSTGRES_PASSWORD: routine_tracker
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U routine_tracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DATABASE_URL: jdbc:postgresql://db:5432/routine_tracker
+      DATABASE_USERNAME: routine_tracker
+      DATABASE_PASSWORD: routine_tracker
+      JWT_SECRET: local-dev-secret-troque-em-producao
+      FRONTEND_URL: http://localhost:5173
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

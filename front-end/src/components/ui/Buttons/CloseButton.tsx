@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@/shared/util";
 import { X } from "lucide-react";
 
 interface Props extends React.ComponentPropsWithoutRef<'button'> {
@@ -9,12 +9,11 @@ export function CloseButton({className, ...props}: Props) {
     return (
         <button 
             {...props}
-            className={cn("size-fit items-center justify-center flex text-ink cursor-pointer hover:text-ink/60 transition-colors duration-300 ease-in-out",  className)}
+            className={cn("size-fit items-center justify-center flex text-ink cursor-pointer hover:text-red transition-colors duration-300 ease-in-out",
+                className
+            )}
         >
-            <X 
-                strokeWidth={3}
-                className="size-3"
-            />
+            <X strokeWidth={3} className="size-3"/>
         </button>
     )
 }

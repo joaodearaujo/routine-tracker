@@ -1,20 +1,22 @@
 @import "tailwindcss";
 @theme {
-  /* ── Shared ── */
-  --color-teal: #35C28D;
-  --color-purple: #9E96EF;
-  --color-pink: #E76F9C;
-  --color-amber: #E2A64C;
-  --color-red: #FB2C36;
-  --color-blue: #5BA2E9;
-  --color-blue2: #0080ff;
-  --color-ok: #35C28D;
-  --color-edit: #E2A64C;
-  --radius-default: 12px
+  /* ── Shared — derived from the HabitForge flame logo ── */
+  --color-flame: #FF7A3D;       /* primary brand — flame mid-tone */
+  --color-flame-dark: #C6401F;  /* flame shadow / pressed states, gradient end */
+  --color-amber: #FFB648;       /* secondary accent — flame highlight */
+  --color-cream: #FFE8A3;       /* tertiary accent — flame tip, subtle highlights */
+  --color-purple: #9E96EF;      /* kept as a cool counterpoint for charts/tags needing contrast */
+  --color-pink: #E76F9C;        /* kept as a cool counterpoint for charts/tags needing contrast */
+  --color-red: #FB2C36;         /* functional: error/danger — unchanged */
+  --color-blue: #5BA2E9;        /* functional: info — unchanged */
+  --color-blue2: #0080ff;       /* functional: info (alt) — unchanged */
+  --color-ok: #35C28D;          /* functional: success — unchanged, reads clearly against orange */
+  --color-edit: var(--color-flame);        /* functional: edit/warning — now matches amber flame highlight */
+  --radius-default: 12px;
 
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Space Grotesk', sans-serif;
-  
+
   --color-bg: #0F1113;
   --color-surface: #181B1F;
   --color-surface2: #20242A;
@@ -34,7 +36,7 @@
   --color-muted: #72727A;
   --color-line: rgba(0, 0, 0, 0.08);
   --color-line2: rgba(0, 0, 0, 0.15);
-  --color-edit: #E76F9C;
+  --color-edit: var(--color-flame);      
   --shadow-aura: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   --shadow-flat: 0 12px 0px 0px rgba(0, 0, 0, 0.50);
   --shadow-aura-strong: 0 4px 20px 0 rgba(0, 0, 0, 0.14);
@@ -52,7 +54,7 @@
 }
 
 * {
-  /* border: 1px solid red; */
+  /* border: 1px solid red;                              */
 }
 
 body {

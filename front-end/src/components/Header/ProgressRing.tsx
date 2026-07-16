@@ -1,5 +1,5 @@
 import { useTheme } from "@/context/ThemeContext";
-import { cn } from "@/utils/cn";
+import { cn } from "@/shared/util";
 
 interface Props {
   current: number;
@@ -54,9 +54,9 @@ export function ProgressRing({
           strokeDasharray={circumference}        
           strokeDashoffset={offset}              
           className={cn(
-            "transition-all duration-800 ease-in-out",
-            !(current === 0) && 'stroke-green-400',
-            isDark && 'drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]'
+            "transition-all duration-600 ease-out",
+            current === 0 ? 'stroke-transparent' : 'stroke-flame',
+            isDark && current !== 0 && 'drop-shadow-[0_0_8px_rgba(255,122,61,0.6)]'
           )}
         />
       </svg>

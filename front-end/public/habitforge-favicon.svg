@@ -1,0 +1,40 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7A3D"/>
+      <stop offset="100%" stop-color="#C6401F"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8A3"/>
+      <stop offset="45%" stop-color="#FFB648"/>
+      <stop offset="100%" stop-color="#FFF3D6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App icon background: rounded square -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#bgGrad)"/>
+
+  <!-- Anvil base (forge reference) -->
+  <path d="M18 46 h28 l-3 6 h-22 z" fill="#3A2A22" opacity="0.85"/>
+  <rect x="27" y="43" width="10" height="4" fill="#3A2A22" opacity="0.85"/>
+
+  <!-- Flame shape -->
+  <path d="M32 12
+           C 26 20, 22 24, 22 32
+           C 22 40, 27 45, 32 45
+           C 37 45, 42 40, 42 32
+           C 42 27, 39 24, 37 20
+           C 37 25, 34 27, 32 24
+           C 30 20, 33 16, 32 12 Z"
+        fill="url(#flameGrad)"/>
+
+  <!-- Inner flame highlight -->
+  <path d="M32 26
+           C 29 30, 27 33, 27 36
+           C 27 40, 29 42, 32 42
+           C 35 42, 37 40, 37 36
+           C 37 33, 35 31, 34 29
+           C 34 31, 32 32, 32 30
+           C 31 28, 33 27, 32 26 Z"
+        fill="#FF7A3D" opacity="0.55"/>
+</svg>

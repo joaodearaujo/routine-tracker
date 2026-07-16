@@ -1,5 +1,5 @@
 import { useTheme } from "@/context/ThemeContext";
-import { cn } from "@/utils/cn";
+import { cn } from "@/shared/util";
 interface Dot {
     color: string; 
     className?: string;

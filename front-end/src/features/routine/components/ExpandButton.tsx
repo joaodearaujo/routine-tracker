@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/shared/util";
 interface ExpandButtonProps extends React.ComponentPropsWithoutRef<'button'>{
     isExpanded: boolean;
     className?: string;

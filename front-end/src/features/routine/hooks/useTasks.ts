@@ -1,20 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAllTasks } from "../api/task.api";
 import { mapTaskToDomain } from "../mappers/task.mapper";
+import type { Task } from "../types/routine.domain.type";
+import { useCreateResource, useDeleteResource, useGetResource, useUpdateResource} from "./useCrudOperations"
 
-export function useTasks() {
-    const query = useQuery({
-        queryKey: ['tasks'],
-        queryFn: getAllTasks,
+export const useCreateTask = () => useCreateResource<Task, Omit<Task, 'id'>>("v1/task", ["v1/routine"]);
 
-    });
+export const useToggleIsCompletedTask = () => useUpdateResource<Partial<Omit<Task, 'id'>>>("v1/task/toggleComplete", ["v1/routine", "v1/task"]);
 
-    const mapped = query.data ? mapTaskToDomain(query.data) : [];
+export const useUpdateTask = () => useUpdateResource<Partial<{ title: string }>>("v1/task", ["v1/routine"]);
 
-    return {
-        tasks:  mapped,
-        isLoading: query.isLoading,
-        isError: query.isError,
-    };
+export const useDeleteTask = () => useDeleteResource("v1/task", ["v1/routine"]);
 
+export const useGetTask = () => {
+  const query = useGetResource<Task>('v1/task');
+
+  const mapped = query.data ? mapTaskToDomain(query.data) : [];
+
+  return {
+    tasks: mapped,
+    task: mapped[0],
+    isLoading: query.isLoading,
+    isError: query.isError,
+  };
 }
+

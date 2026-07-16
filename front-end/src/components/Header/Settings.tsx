@@ -1,8 +1,8 @@
 import { Moon, SquarePen, Sun } from "lucide-react";
 import { useEditMode } from "@/context/EditModeContext";
 import { useTheme } from "@/context/ThemeContext";
-import { StandardButton } from "@/components/ui/Buttons/StandardButton";
-import { cn } from "@/utils/cn";
+import { DefaultButton } from "@/components/ui/Buttons/DefaultButton";
+import { cn } from "@/shared/util";
 
 export function Settings() {
   const { isEditMode, toggleEditMode } = useEditMode();
@@ -11,7 +11,7 @@ export function Settings() {
   return (
     <div className="w-fit flex flex-col gap-2 items-center justify-center">
       {/* Theme toggle */}
-      <StandardButton
+      <DefaultButton
         onClick={toggleTheme}
         Icon={isDark ? Moon : Sun}
         label="Toggle theme"
@@ -25,8 +25,8 @@ export function Settings() {
       />
 
       {/* Edit mode toggle */}
-      <StandardButton
-        onClick={() => {}}
+      <DefaultButton
+        onClick={toggleEditMode}
         Icon={SquarePen}
         label="Toggle edit mode"
         classNameIcon={cn(

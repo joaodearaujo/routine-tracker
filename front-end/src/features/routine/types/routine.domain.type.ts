@@ -1,25 +1,25 @@
 
 export interface Task {
-  groupId: string;
   id: string;
   category: 'BODY' | 'CARE' | 'MIND' | 'STUDY'; 
   title: string;                                
-  description?: string;
-  isComplete: boolean;                
-  isMandatory: boolean;        
+  description: string | null;  
+  isCompleted: boolean;                
+  isCore: boolean;        
+
+  
 }
 
 export interface TaskGroup {
-  routineId: string;
   id: string;
   title: string;                               
-  description?: string;
+  description: string | null;  
   tasks: Task[];                                
 }
 
 export interface Routine {
   id: string;
   title: string;
-  description?: string;                               
+  description: string | null;                          
   groups: TaskGroup[];                     
 }
